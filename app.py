@@ -49,15 +49,27 @@ def _format_result(value: str) -> str:
 
 def _render_authentication() -> None:
     _render_brand()
+    auth_page = st.radio(
+        "Account access",
+        ["Sign in", "Create account"],
+        horizontal=True,
+        label_visibility="collapsed",
+        key="auth_page",
+    )
+    heading = "Welcome to PhishGuard" if auth_page == "Sign in" else "Create your account"
+    subtitle = (
+        "A machine-learning workspace for safer URL decisions."
+        if auth_page == "Sign in"
+        else "Register to check URLs and keep your own detection history."
+    )
     st.markdown(
-        '<div class="eyebrow">SECURITY STARTS WITH A CHECK</div>'
-        '<h1 class="page-title">Welcome to PhishGuard</h1>'
-        '<p class="page-subtitle">A machine-learning workspace for safer URL decisions.</p>',
+        f'<div class="eyebrow">SECURITY STARTS WITH A CHECK</div>'
+        f'<h1 class="page-title">{heading}</h1>'
+        f'<p class="page-subtitle">{subtitle}</p>',
         unsafe_allow_html=True,
     )
-    login_tab, register_tab = st.tabs(["Sign in", "Create account"])
 
-    with login_tab:
+    if auth_page == "Sign in":
         with st.form("login_form"):
             identifier = st.text_input("Username or email", autocomplete="username")
             password = st.text_input("Password", type="password", autocomplete="current-password")
@@ -72,8 +84,7 @@ def _render_authentication() -> None:
                 else:
                     st.session_state["user_id"] = user["id"]
                     st.rerun()
-
-    with register_tab:
+    else:
         with st.form("register_form"):
             full_name = st.text_input("Full name", max_chars=100)
             username = st.text_input("Username", max_chars=32, autocomplete="username")
@@ -102,12 +113,12 @@ def _render_authentication() -> None:
                 st.session_state["user_id"] = user_id
                 st.success("Your account is ready.")
                 st.rerun()
+        st.caption("Already registered? Choose Sign in above.")
 
     st.caption(
         "Administrator accounts are provisioned by an operator with "
-        "`python auth.py create-admin`; public registration always creates a standard user."
+        "python auth.py create-admin; public registration always creates a standard user."
     )
-
 
 def _render_missing_model() -> bool:
     try:
