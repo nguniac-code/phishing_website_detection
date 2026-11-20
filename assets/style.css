@@ -1,0 +1,139 @@
+:root {
+  --ink: #eaf2fb;
+  --muted: #91a5ba;
+  --mint: #43d9b2;
+  --panel: #111d2b;
+  --line: rgba(159, 184, 209, .13);
+}
+
+.stApp {
+  background:
+    radial-gradient(ellipse at 82% 0%, rgba(52, 94, 148, .15), transparent 36%),
+    #0b1420;
+  color: var(--ink);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+[data-testid="stSidebar"] {
+  background: #0e1926;
+  border-right: 1px solid var(--line);
+}
+
+[data-testid="stHeader"] {
+  background: rgba(11, 20, 32, .78);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 34px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  color: #071712;
+  background: linear-gradient(140deg, #70f1ce, #31bfa0);
+  font: 700 22px 'Segoe UI', sans-serif;
+  box-shadow: 0 8px 24px rgba(67, 217, 178, .2);
+}
+
+.brand-name {
+  color: #edf5fc;
+  font: 700 14px 'Segoe UI', sans-serif;
+  letter-spacing: 1.6px;
+}
+
+.brand-caption, .eyebrow {
+  color: var(--mint);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.page-title {
+  color: #edf5fc;
+  font: 600 clamp(28px, 3vw, 40px) 'Segoe UI', sans-serif;
+  letter-spacing: -1.2px;
+  margin: 4px 0 8px;
+}
+
+.page-subtitle {
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+[data-testid="stMetric"] {
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 18px 20px;
+  background: rgba(17, 29, 43, .76);
+}
+
+[data-testid="stMetricLabel"] p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+[data-testid="stMetricValue"] {
+  color: #f0f7fd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.stButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primary"] {
+  background: linear-gradient(115deg, #54e1bb, #32b99d);
+  border: 0;
+  border-radius: 10px;
+  color: #071712;
+  font-weight: 700;
+  min-height: 44px;
+}
+
+.stButton > button, .stDownloadButton > button {
+  border-radius: 9px;
+}
+
+[data-testid="stForm"] {
+  border-color: var(--line);
+  border-radius: 14px;
+  background: rgba(17, 29, 43, .45);
+}
+
+.empty-state {
+  padding: 30px 20px;
+  color: var(--muted);
+  border: 1px dashed rgba(159, 184, 209, .22);
+  border-radius: 13px;
+  text-align: center;
+  background: rgba(17, 29, 43, .42);
+}
+
+[data-testid="stDataFrame"], [data-testid="stTable"] {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+h2, h3 {
+  color: #e7f0f8;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+div[data-baseweb="tab-list"] {
+  gap: 14px;
+}
+
+div[data-baseweb="tab"] {
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .block-container {
+    padding-top: 2.4rem;
+  }
+}
